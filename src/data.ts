@@ -341,12 +341,12 @@ export const CATCH_REPORTS: CatchReport[] = [
   {
     id: 'report-4',
     speciesId: 'sailfish-marlin',
-    speciesName: 'Pacific Sailfish',
+    speciesName: 'Pacific Blue Marlin',
     guestName: 'Mike & Sarah',
     month: 'February',
     year: 2026,
-    weight: '95 lbs',
-    length: '7.2 ft',
+    weight: '400+ lbs est.',
+    length: '10.5 ft',
     location: 'Pacific drop-off, west of Osa Peninsula',
     captainQuote: 'Two raises in the spread within an hour. First fish broke off but the second stayed hooked through three massive jumps. Released healthy and watched it light up before it disappeared. That\'s what this is all about.',
     image: marlinImg

@@ -28,6 +28,7 @@ import TripBuilder from './components/TripBuilder';
 import CatchGallery from './components/CatchGallery';
 import CulinaryGuide from './components/CulinaryGuide';
 import FishFlipCard from './components/FishFlipCard';
+import MigrationMap from './components/MigrationMap';
 import { SPECIES_DATA, SPECIAL_FEATURES, IMAGES, CHARTER_TRIPS } from './data';
 import { Species } from './types';
 
@@ -295,6 +296,7 @@ export default function App() {
         <nav className="hidden xl:flex items-center gap-5 font-mono text-[10px] uppercase tracking-widest text-white/40">
           <button onClick={() => handleScrollTo('features')} className={`hover:text-gold-400 transition duration-300 cursor-pointer`}>Geography</button>
           <button onClick={() => handleScrollTo('species')} className={`hover:text-gold-400 transition duration-300 cursor-pointer`}>The Catch</button>
+          <button onClick={() => handleScrollTo('migration')} className={`hover:text-gold-400 transition duration-300 cursor-pointer`}>Migration</button>
           <button onClick={() => handleScrollTo('culinary')} className={`hover:text-gold-400 transition duration-300 cursor-pointer font-semibold text-gold-300`}>Captain's Galley</button>
           <button onClick={() => handleScrollTo('solunar')} className={`hover:text-gold-400 transition duration-300 cursor-pointer`}>Tide Forecast</button>
           <button onClick={() => handleScrollTo('tripbuilder')} className={`hover:text-gold-400 transition duration-300 cursor-pointer`}>Itinerary Planner</button>
@@ -738,6 +740,9 @@ export default function App() {
  
         </div>
       </section>
+
+      {/* PACIFIC MIGRATION CORRIDORS */}
+      <MigrationMap />
 
       {/* SOLUNAR FORECASTING SERVICE */}
       <section id="solunar" className="py-20 lg:py-28 relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #020d0a 0%, #041510 40%, #070e08 100%)' }}>

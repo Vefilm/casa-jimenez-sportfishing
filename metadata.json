@@ -1,0 +1,6 @@
+{
+  "name": "Casa Jimenez Sport Fishing",
+  "description": "Costa Rican sportfishing charter on the Gulf of Dulce, Puerto Jiménez, Osa Peninsula. Yellowfin Tuna, Sailfish, Dorado, and inshore Roosterfish charters aboard the Kaylee — with live tides, solunar data, interactive trip builder, and fish anatomy flip cards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

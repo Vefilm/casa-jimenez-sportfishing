@@ -914,7 +914,7 @@ export default function App() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Contact on WhatsApp"
-        className="fixed bottom-[88px] right-6 z-50 h-14 w-14 rounded-full flex items-center justify-center shadow-2xl transition-transform hover:scale-105 active:scale-95"
+        className="fixed bottom-[112px] right-6 z-50 h-14 w-14 rounded-full flex items-center justify-center shadow-2xl transition-transform hover:scale-105 active:scale-95"
         style={{ background: 'linear-gradient(135deg, #128c3e 0%, #075e2f 100%)', border: '1px solid rgba(37,211,102,0.35)' }}
       >
         {/* WhatsApp icon (inline SVG) */}

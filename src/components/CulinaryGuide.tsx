@@ -381,10 +381,6 @@ export default function CulinaryGuide() {
                       </div>
                     </div>
 
-                    <div className="bg-black/30 p-3 rounded-xl flex items-start gap-2 text-[10px] font-mono leading-relaxed text-white/45">
-                      <Info size={14} className="text-teal-400 shrink-0 mt-0.5" />
-                      <span>Every fish harvested is immediately transferred to a sub-zero salt slurry to preserve perfect muscle structure.</span>
-                    </div>
                   </div>
                 ) : (
                   <div className="bg-amber-500/5 border border-amber-500/20 p-6 rounded-2xl flex flex-col justify-center h-full gap-5">

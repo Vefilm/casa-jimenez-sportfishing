@@ -19,12 +19,18 @@ import fishDoradoPhoto from '../assets/images/dorado_mahi_1781200329038.jpg';
 import fishDoradoAlt from '../assets/images/real/fish_dorado_inner.jpg';
 // @ts-ignore
 import fishRoosterPhoto from '../assets/images/rooster_fish_1781200344379.jpg';
+// @ts-ignore
+import fishPargoPhoto from '../assets/images/rooster_fish_1781200344379.jpg';
+// @ts-ignore
+import fishAmberjackPhoto from '../assets/images/yellowfin_tuna_1781200373236.jpg';
 
 const FISH_MARKER_MAP: Record<string, string> = {
   'yellowfin-tuna':  fishTunaPhoto,
   'sailfish-marlin': fishSailfishPhoto,
   'dorado-mahi':     fishDoradoPhoto,
   'roosterfish':     fishRoosterPhoto,
+  'pargo':           fishPargoPhoto,
+  'amberjack':       fishAmberjackPhoto,
 };
 
 // Alternate "second view" images for the markers (swaps on interaction)
@@ -132,6 +138,38 @@ const MIGRATION_ROUTES: MigrationRoute[] = [
       [-83.0, 9.0],
     ],
   },
+  {
+    // Pargo — inshore reef, short-range resident
+    speciesId: 'pargo',
+    color: '#ef4444',
+    coordinates: [
+      [-83.7, 8.2],
+      [-83.6, 8.3],
+      [-83.5, 8.35],
+      [-83.4, 8.45],
+      [-83.3, 8.35],
+      [-83.2, 8.5],
+      [-83.1, 8.65],
+      [-83.0, 8.8],
+    ],
+  },
+  {
+    // Amberjack — offshore structure, mid-range
+    speciesId: 'amberjack',
+    color: '#8b5cf6',
+    coordinates: [
+      [-84.5, 7.8],
+      [-84.3, 8.0],
+      [-84.0, 8.2],
+      [-83.8, 8.3],
+      [-83.6, 8.4],
+      [-83.5, 8.5],
+      [-83.4, 8.6],
+      [-83.3, 8.7],
+      [-83.2, 8.85],
+      [-83.0, 9.1],
+    ],
+  },
 ];
 
 // ────────────────────────────────────────────────────────────
@@ -180,6 +218,28 @@ const HEAT_ANCHORS: Record<string, { points: HeatAnchor[]; peakMonths: number[] 
       { lng: -83.60, lat: 8.35 },
       { lng: -83.40, lat: 8.60 },
       { lng: -83.20, lat: 8.70 },
+    ],
+  },
+  'pargo': {
+    peakMonths: [2, 3, 4, 5, 6],
+    points: [
+      { lng: -83.50, lat: 8.50 },
+      { lng: -83.40, lat: 8.45 },
+      { lng: -83.30, lat: 8.55 },
+      { lng: -83.60, lat: 8.35 },
+      { lng: -83.45, lat: 8.60 },
+      { lng: -83.20, lat: 8.50 },
+    ],
+  },
+  'amberjack': {
+    peakMonths: [4, 5, 6, 7],
+    points: [
+      { lng: -84.00, lat: 8.30 },
+      { lng: -83.80, lat: 8.50 },
+      { lng: -83.50, lat: 8.60 },
+      { lng: -84.20, lat: 8.10 },
+      { lng: -83.60, lat: 8.40 },
+      { lng: -83.30, lat: 8.80 },
     ],
   },
 };

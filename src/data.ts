@@ -48,11 +48,11 @@ export const SPECIES_DATA: Species[] = [
     habitat: 'Deep Pacific blue water off the Osa Peninsula, often running with large schools of Spinner Dolphins beyond the continental shelf.',
     seasonText: 'Peak: May to October. Strong year-round action off the Osa.',
     peakMonths: [4, 5, 6, 7, 8, 9],
-    bestBait: 'Cedar plugs, skirted jet-head lures, or live goggle-eyes cast into active feeding frenzies alongside dolphin schools.',
-    tactics: 'Captain Jorge reads the sky for diving frigates and watches for leaping Spinner Dolphins. Once on a school, speed-troll or pitch live baits into the center of the boil.',
+    bestBait: 'Live sardines collected at sunrise, free-lined into active feeding frenzies alongside dolphin schools. When the sardines are thick, the tuna are never far behind.',
+    tactics: 'Captain Jorge reads the sky for diving frigates and watches for leaping Spinner Dolphins. Once on a school, he chumms with live sardines and pitches them into the center of the boil.',
     fightingStyle: 'Pure vertical endurance. After a freight-train run, they deep-dive in tight circles demanding steady pump-and-reel rhythm. These fish will test every muscle you have.',
     image: tunaImg1,
-    description: 'The bread and butter of Casa Jimenez charters. The Pacific waters off the Osa Peninsula deliver some of the most consistent Yellowfin action in all of Costa Rica — fish running from 40-lb schoolies all the way to 150+ lb cow-class giants.',
+    description: 'The bread and butter of Casa Jimenez charters. The Pacific waters off the Osa Peninsula deliver some of the most consistent Yellowfin action in all of Costa Rica — hard-fighting fish that test every muscle you have.',
     conservationStatus: 'Sustainable table fare. Sashimi-grade quality packed fresh in ice immediately after catch.'
   },
   {
@@ -99,6 +99,36 @@ export const SPECIES_DATA: Species[] = [
     image: roosterImg,
     description: 'One of the most sought-after inshore catches in the world. The Osa coastline offers prime roosterfish habitat — remote beaches, rocky headlands, and untouched reef structure rarely pressured by other boats.',
     conservationStatus: '100% Catch & Release. A trophy to be returned for future generations.'
+  },
+  {
+    id: 'pargo',
+    name: 'Pargo (Pacific Red Snapper)',
+    scientificName: 'Lutjanus peru',
+    category: 'inshore',
+    habitat: 'Rocky reefs, volcanic structure, and deep pinnacles along the Osa coastline and Gulf of Dulce. Pargo hold tight to structure at 30–80 ft.',
+    seasonText: 'Year-round. Peak: March to July.',
+    peakMonths: [2, 3, 4, 5, 6],
+    bestBait: 'Live blue runners, cut bait, or fresh squid drifted deep along rocky bottoms.',
+    tactics: 'Captain Jorge reads the bottom structure on sonar, dropping live bait rigged on heavy fluorocarbon leaders directly into the reef. Pargo hit hard and head straight for the rocks.',
+    fightingStyle: 'Down and dirty. Pargo strike and immediately dive for the nearest volcanic crevice. You have to turn them before they cut you off on the reef — brute force wins.',
+    image: roosterImg,
+    description: 'One of the best-eating fish in the Pacific. Pargo (Pacific Red Snapper) is a prized table fish throughout Costa Rica — firm white flesh, clean flavor, and hard-fighting on light tackle. The Gulf of Dulce holds consistent pargo action year-round on its volcanic reef structure.',
+    conservationStatus: 'Sustainable table fare. INCOPESCA size limits enforced.'
+  },
+  {
+    id: 'amberjack',
+    name: 'Amberjack',
+    scientificName: 'Seriola lalandi',
+    category: 'offshore',
+    habitat: 'Offshore pinnacles, current breaks, and deep bathymetric structure beyond the Osa Peninsula shelf. Amberjack patrol mid-water columns near reef edges.',
+    seasonText: 'Year-round. Peak: May to August.',
+    peakMonths: [4, 5, 6, 7],
+    bestBait: 'Live bonito, jigs worked deep mid-water, or slow-trolled whole mackerel at the edge of current breaks.',
+    tactics: 'Locating submerged pinnacles and drop-offs where amberjack ambush prey from below. Heavy jigging gear is essential — these fish do not tire quickly.',
+    fightingStyle: 'Sustained, crushing power. Amberjack are pure muscle from head to tail — long, deep runs with no quit. Everything you have and then some.',
+    image: tunaImg1,
+    description: 'Amberjack are the heavyweights of the mid-water column. Found on offshore structure along the same current lines as tuna but holding deeper. They fight harder than fish twice their size and are excellent table fare when bled and iced immediately.',
+    conservationStatus: 'Sustainable table fare. Good eating when handled properly.'
   }
 ];
 
@@ -107,7 +137,7 @@ export const SPECIAL_FEATURES = [
     id: 'gulf-dulce',
     title: 'The Gulf of Dulce',
     subtitle: 'One of Costa Rica\'s Last Secrets',
-    description: 'The Gulf of Dulce is a rare tropical fjord — one of only three in the world. Fed by cold, deep water from the Pacific, it creates an extraordinary mix of calm protected bay fishing and direct access to the open ocean. Snook, cubera snapper, and roosterfish in the shallows. Tuna and marlin 30 minutes offshore.',
+    description: 'The Gulf of Dulce is a rare tropical fjord — one of only three in the world. Fed by cold, deep water from the Pacific, it creates an extraordinary mix of protected bay fishing and direct access to the open ocean. Snook, cubera snapper, and roosterfish in the shallows. Tuna and marlin 30 minutes offshore. Note: Pacific storms can build fast — Captain Jorge monitors radar closely and always prioritizes your safety.',
     iconName: 'Waves'
   },
   {
@@ -133,7 +163,7 @@ export const CHARTER_TRIPS: CharterTrip[] = [
     category: 'inshore',
     duration: 'Half-Day (4h)',
     price: '$650',
-    bestFor: 'Families, first-timers, and anyone who wants consistent action in the calm protected waters of the Gulf.',
+    bestFor: 'Families, first-timers, and anyone who wants consistent action in the protected waters of the Gulf.',
     capacity: 'Up to 6 Anglers',
     included: [
       'Quality spinning and light tackle gear',
@@ -169,11 +199,11 @@ export const CHARTER_TRIPS: CharterTrip[] = [
     capacity: 'Up to 6 Anglers',
     included: [
       'High-speed trolling and jigging setups',
-      'Live bait and cedar plugs rigged and ready',
+      'Live sardines and assorted rigged bait',
       'Full ice box for your catch',
       'Fish filleted and packed for your cooler'
     ],
-    description: 'Pure tuna hunting. We push out to where the Spinner Dolphins are working and stay until the bite dies. These fish run hard — 40 to 150+ lbs. The Kaylee handles them. The group photo you\'ve been waiting for.'
+    description: 'Pure tuna hunting. We push out to where the Spinner Dolphins are working and stay until the bite dies. These fish run hard and fight harder. The Kaylee handles them. The group photo you\'ve been waiting for.'
   },
   {
     id: 'combo-day',
@@ -306,8 +336,8 @@ export const CATCH_REPORTS: CatchReport[] = [
     guestName: 'The Rodriguez Group',
     month: 'May',
     year: 2013,
-    weight: '90+ lbs each',
-    length: '4.8 ft',
+    weight: '',
+    length: '',
     location: 'Pacific offshore, 25 miles from Puerto Jiménez',
     captainQuote: 'We loaded the box that day. Five guys, eight tuna — the kind of trip people drive across the country for. The Spinner Dolphins put us right on the school and we never left until the bite slowed down.',
     image: groupCatchImg
@@ -319,8 +349,8 @@ export const CATCH_REPORTS: CatchReport[] = [
     guestName: 'Private Charter',
     month: 'June',
     year: 2026,
-    weight: '130 lbs est.',
-    length: '5.1 ft',
+    weight: '',
+    length: '',
     location: 'Pacific offshore, Osa Peninsula',
     captainQuote: 'This fish fought for 45 minutes. Every time we thought it was done it made another deep run. When we finally got it to the surface the whole boat went quiet — it was that big.',
     image: captainTunaImg
@@ -332,10 +362,10 @@ export const CATCH_REPORTS: CatchReport[] = [
     guestName: 'Private Charter',
     month: 'June',
     year: 2026,
-    weight: '80 lbs',
-    length: '4.2 ft',
+    weight: '',
+    length: '',
     location: 'Pacific offshore near Caño Island corridor',
-    captainQuote: 'Found the dolphins working a massive bait ball about 20 miles out. Cedar plugs got hit on the first pass. This one took the live goggle-eye on the second drift — came out of nowhere and just crushed it.',
+    captainQuote: 'Found the dolphins working a massive bait ball about 20 miles out. Live sardines got hit on the first drift. This one came out of nowhere and just crushed it.',
     image: tunaImg2
   },
   {

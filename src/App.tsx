@@ -48,12 +48,18 @@ import fishDoradoAlt from './assets/images/dorado_mahi_1781200329038.jpg';
 import fishRoosterOuter from './assets/images/real/fish_rooster_outer.jpg';
 // @ts-ignore
 import fishRoosterAlt from './assets/images/rooster_fish_1781200344379.jpg';
+// @ts-ignore
+import fishPargoAlt from './assets/images/rooster_fish_1781200344379.jpg';
+// @ts-ignore
+import fishAmberjackAlt from './assets/images/yellowfin_tuna_1781200373236.jpg';
 
 const FISH_IMAGES: Record<string, [string, string]> = {
   'yellowfin-tuna':  [fishTunaOuter,     fishTunaAlt],
   'sailfish-marlin': [fishSailfishOuter, fishSailfishAlt],
   'dorado-mahi':     [fishDoradoOuter,   fishDoradoAlt],
   'roosterfish':     [fishRoosterOuter,  fishRoosterAlt],
+  'pargo':           [fishRoosterOuter,  fishPargoAlt],
+  'amberjack':       [fishTunaOuter,     fishAmberjackAlt],
 };
 
 // Ambient Theme Parameters & Live Rig configurations for interactive gear testing
@@ -127,6 +133,36 @@ const speciesThemes: Record<string, {
     rigs: [
       { id: 'popper_frenzy', label: 'Surface Casting Popper', desc: 'Adrenaline popper cast right in the path of feeding spinner dolphins.', stats: { 'Hookup rate': '95%', 'Target Stealth': '70%', 'Release safety': '96%' } },
       { id: 'cedar_plug', label: 'Natural Cedar core', desc: 'Runs tight, deep, vibrating natural wood scents representing small flyers.', stats: { 'Hookup rate': '89%', 'Target Stealth': '90%', 'Release safety': '90%' } }
+    ]
+  },
+  'pargo': {
+    accentColor: 'text-[#ef4444]', // Red
+    glowColor: '#ef4444',
+    gradientClass: 'from-[#2a0a0a] to-[#0A0D11]',
+    glowClass: 'bg-red-400/5',
+    badgeClass: 'bg-red-400/10 border-red-400/30 text-red-300',
+    pillsClass: 'border-red-500/20 text-red-200 hover:border-red-500/50',
+    borderClass: 'border-red-400/20',
+    tagline: 'Volcanic Reef Drop-offs',
+    silhouette: 'tuna',
+    rigs: [
+      { id: 'live_runner', label: 'Deep Live Runner', desc: 'Live blue runner weighted heavy and dropped straight into the reef zone on a circle hook.', stats: { 'Hookup rate': '96%', 'Target Stealth': '85%', 'Release safety': '92%' } },
+      { id: 'squid_rig', label: 'Fresh Squid Rig', desc: 'Strip of fresh squid on a double-hook bottom rig — classic pargo presentation on hard structure.', stats: { 'Hookup rate': '88%', 'Target Stealth': '92%', 'Release safety': '90%' } }
+    ]
+  },
+  'amberjack': {
+    accentColor: 'text-[#8b5cf6]', // Purple
+    glowColor: '#8b5cf6',
+    gradientClass: 'from-[#1a0a2e] to-[#0A0D11]',
+    glowClass: 'bg-purple-400/5',
+    badgeClass: 'bg-purple-400/10 border-purple-400/30 text-purple-300',
+    pillsClass: 'border-purple-500/20 text-purple-200 hover:border-purple-500/50',
+    borderClass: 'border-purple-400/20',
+    tagline: 'Mid-Column Current Breaks',
+    silhouette: 'tuna',
+    rigs: [
+      { id: 'heavy_jig', label: 'Deep Water Jig', desc: 'Heavy butterfly jig worked on the drop through mid-water columns where amberjack hold.', stats: { 'Hookup rate': '90%', 'Target Stealth': '80%', 'Release safety': '85%' } },
+      { id: 'live_bonito', label: 'Slow-Trolled Bonito', desc: 'Whole live bonito slow-trolled at the edge of current breaks — triggers aggressive strikes.', stats: { 'Hookup rate': '85%', 'Target Stealth': '90%', 'Release safety': '88%' } }
     ]
   }
 };
@@ -271,9 +307,15 @@ export default function App() {
           </span>
           <span className="hidden sm:inline text-white/20">•</span>
           <span className="flex items-center gap-1">
-            <Waves size={12} className="text-white/30" /> Sea: 1.2ft Glassy Swell
+            <Waves size={12} className="text-white/30" /> Sea: 1.2ft Light Chop
           </span>
         </div>
+      </div>
+
+      {/* TROPICAL WEATHER ADVISORY — storms build fast on the Pacific */}
+      <div className="bg-amber-500/8 border-b border-amber-500/15 text-white/55 py-1.5 px-4 lg:px-8 text-[10px] font-mono tracking-wider flex items-center justify-center gap-2 relative z-50">
+        <span className="text-amber-400 text-[11px]">⚠</span>
+        <span>Tropical Pacific conditions can change quickly — storms build fast. Captain Jorge monitors radar and will adjust or reschedule for your safety.</span>
       </div>
 
       {/* GLASSMORPHIC BRAND MENU */}

@@ -20,7 +20,7 @@ export default function CatchGallery() {
   // Filter logic
   const filteredReports = CATCH_REPORTS.filter((report) => {
     if (filter === 'all') return true;
-    if (filter === 'offshore') return ['sailfish-marlin', 'yellowfin-tuna', 'dorado-mahi'].includes(report.speciesId);
+    if (filter === 'offshore') return ['sailfish-marlin', 'yellowfin-tuna', 'dorado-mahi', 'amberjack'].includes(report.speciesId);
     if (filter === 'inshore') return report.speciesId === 'roosterfish';
     return true;
   });
@@ -100,9 +100,11 @@ export default function CatchGallery() {
                 
                 {/* Visual badges over the image */}
                 <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                  <span className="bg-black/70 text-[10px] font-mono font-medium text-white border border-white/10 px-2.5 py-0.5 rounded backdrop-blur">
-                    {report.weight}
-                  </span>
+                  {report.weight && (
+                    <span className="bg-black/70 text-[10px] font-mono font-medium text-white border border-white/10 px-2.5 py-0.5 rounded backdrop-blur">
+                      {report.weight}
+                    </span>
+                  )}
                   {report.speciesId === 'roosterfish' && (
                     <span className="bg-emerald-500/85 text-[8px] font-mono font-bold text-white uppercase tracking-wider px-2 py-0.5 rounded backdrop-blur">
                       Released ✓
@@ -179,9 +181,11 @@ export default function CatchGallery() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-6">
-                  <span className="bg-teal-500 text-white text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-0.5 rounded-full">
-                    {activeModalReport.weight} Landing
-                  </span>
+                  {activeModalReport.weight && (
+                    <span className="bg-teal-500 text-white text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-0.5 rounded-full">
+                      {activeModalReport.weight} Landing
+                    </span>
+                  )}
                   <h3 className="font-display text-3xl text-black mt-1.5">{activeModalReport.speciesName}</h3>
                 </div>
               </div>
@@ -200,7 +204,7 @@ export default function CatchGallery() {
                   </div>
                   <div>
                     <label className="text-[9px] font-mono uppercase tracking-wider text-teal-600 block mb-0.5">Physical specs</label>
-                    <span className="text-xs font-mono text-black/80">{activeModalReport.length || 'N/A Length'} • {activeModalReport.weight}</span>
+                    <span className="text-xs font-mono text-black/80">{activeModalReport.length || activeModalReport.weight ? (activeModalReport.length || '—') + ' • ' + (activeModalReport.weight || '—') : 'Catch verified'}</span>
                   </div>
                 </div>
 

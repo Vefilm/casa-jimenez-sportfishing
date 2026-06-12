@@ -35,7 +35,7 @@ export default function TripBuilder() {
 
   // Logic to determine recommended charter based on specific user requirements
   const recommendedCharter: CharterTrip = (() => {
-    const hasOffshoreSelected = selectedSpecies.some(s => ['sailfish-marlin', 'yellowfin-tuna', 'dorado-mahi'].includes(s));
+    const hasOffshoreSelected = selectedSpecies.some(s => ['sailfish-marlin', 'yellowfin-tuna', 'dorado-mahi', 'amberjack'].includes(s));
     const hasInshoreSelected = selectedSpecies.includes('roosterfish');
 
     // 1. Explicit Fishing Type Selector rules:
@@ -87,7 +87,7 @@ export default function TripBuilder() {
       return base + `the **Full Combo Day (10h)** is recommended because it is the only package with the duration and flexibility to target both offshore pelagics and inshore reef species on the same trip — possible only from Puerto Jiménez with direct access to both fisheries.`;
     }
     if (recommendedCharter.id === 'tuna-mission') {
-      return base + `the **Tuna Mission (8h)** is dialed in for you. We run offshore to find the Spinner Dolphin schools, set the trolling spread, and stay on the fish until the bite shuts down. These Yellowfin run hard — 40 to 150+ lbs.`;
+      return base + `the **Tuna Mission (8h)** is dialed in for you. We run offshore to find the Spinner Dolphin schools, set the trolling spread, and stay on the fish until the bite shuts down. These Yellowfin run hard and fight harder.`;
     }
     if (recommendedCharter.id === 'inshore-half') {
       return base + `the **Gulf of Dulce Explorer (4h)** is the perfect starting point. The Gulf's protected water keeps things smooth while Captain Jorge puts you on roosterfish, snapper, and snook along the Osa shoreline.`;

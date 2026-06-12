@@ -81,9 +81,9 @@ export default function CaptainChat() {
       {/* Floating trigger button */}
       <motion.button
         onClick={() => setOpen(v => !v)}
-        className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full flex items-center justify-center shadow-2xl"
+        className={`fixed bottom-6 right-6 z-50 h-14 flex items-center justify-center shadow-2xl transition-all duration-300 ${open ? 'w-14 rounded-full' : 'rounded-full px-4 gap-2'}`}
         style={{ background: 'linear-gradient(135deg, #0a2620 0%, #071a14 100%)', border: '1px solid rgba(20,184,166,0.35)' }}
-        whileHover={{ scale: 1.06 }}
+        whileHover={{ scale: 1.04 }}
         whileTap={{ scale: 0.94 }}
         aria-label="Chat with Captain Jorge"
       >
@@ -93,8 +93,9 @@ export default function CaptainChat() {
               <ChevronDown size={20} className="text-teal-400" />
             </motion.span>
           ) : (
-            <motion.span key="anchor" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
-              <Anchor size={20} className="text-teal-400" />
+            <motion.span key="anchor" className="flex items-center gap-2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.15 }}>
+              <Anchor size={18} className="text-teal-400 shrink-0" />
+              <span className="text-[11px] font-mono font-semibold tracking-widest uppercase text-teal-300 whitespace-nowrap">Ask Captain</span>
             </motion.span>
           )}
         </AnimatePresence>

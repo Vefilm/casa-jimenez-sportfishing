@@ -26,6 +26,7 @@ import {
 import SolunarDashboard from './components/SolunarDashboard';
 import TripBuilder from './components/TripBuilder';
 import CatchGallery from './components/CatchGallery';
+import PhotoGallery from './components/PhotoGallery';
 import CulinaryGuide from './components/CulinaryGuide';
 import FishFlipCard from './components/FishFlipCard';
 import MigrationMap from './components/MigrationMap';
@@ -813,6 +814,9 @@ export default function App() {
           <CatchGallery />
         </div>
       </section>
+
+      {/* BOAT GALLERY — real photos from the Kaylee */}
+      <PhotoGallery />
 
       {/* FAQ SECTION — full-bleed image background */}
       <section className="relative overflow-hidden border-t border-gold-900/15">

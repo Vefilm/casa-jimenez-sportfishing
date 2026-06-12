@@ -19,9 +19,13 @@ import palmSunsetImg from './assets/images/real/palm_sunset.jpg';
 // @ts-ignore
 import marlinImg from './assets/images/blue_marlin_1781200358551.jpg';
 // @ts-ignore
-import doradoImg from './assets/images/dorado_mahi_1781200329038.jpg';
+import doradoImg from './assets/images/fish_mahi_live.jpg';
 // @ts-ignore
 import roosterImg from './assets/images/rooster_fish_1781200344379.jpg';
+// @ts-ignore
+import pargoImg from './assets/images/fish_pargo_outer.jpg';
+// @ts-ignore
+import amberjackImg from './assets/images/fish_amberjack_gen.jpg';
 
 import { Species, CharterTrip, BoatHotspot, CatchReport } from './types';
 
@@ -111,7 +115,7 @@ export const SPECIES_DATA: Species[] = [
     bestBait: 'Live blue runners, cut bait, or fresh squid drifted deep along rocky bottoms.',
     tactics: 'Captain Jorge reads the bottom structure on sonar, dropping live bait rigged on heavy fluorocarbon leaders directly into the reef. Pargo hit hard and head straight for the rocks.',
     fightingStyle: 'Down and dirty. Pargo strike and immediately dive for the nearest volcanic crevice. You have to turn them before they cut you off on the reef — brute force wins.',
-    image: roosterImg,
+    image: pargoImg,
     description: 'One of the best-eating fish in the Pacific. Pargo (Pacific Red Snapper) is a prized table fish throughout Costa Rica — firm white flesh, clean flavor, and hard-fighting on light tackle. The Gulf of Dulce holds consistent pargo action year-round on its volcanic reef structure.',
     conservationStatus: 'Sustainable table fare. INCOPESCA size limits enforced.'
   },
@@ -126,7 +130,7 @@ export const SPECIES_DATA: Species[] = [
     bestBait: 'Live bonito, jigs worked deep mid-water, or slow-trolled whole mackerel at the edge of current breaks.',
     tactics: 'Locating submerged pinnacles and drop-offs where amberjack ambush prey from below. Heavy jigging gear is essential — these fish do not tire quickly.',
     fightingStyle: 'Sustained, crushing power. Amberjack are pure muscle from head to tail — long, deep runs with no quit. Everything you have and then some.',
-    image: tunaImg1,
+    image: amberjackImg,
     description: 'Amberjack are the heavyweights of the mid-water column. Found on offshore structure along the same current lines as tuna but holding deeper. They fight harder than fish twice their size and are excellent table fare when bled and iced immediately.',
     conservationStatus: 'Sustainable table fare. Good eating when handled properly.'
   }

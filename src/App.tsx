@@ -30,6 +30,12 @@ import PhotoGallery from './components/PhotoGallery';
 import CulinaryGuide from './components/CulinaryGuide';
 import FishFlipCard from './components/FishFlipCard';
 import MigrationMap from './components/MigrationMap';
+import CaptainChat from './components/CaptainChat';
+import Testimonials from './components/Testimonials';
+import FishingReport from './components/FishingReport';
+import BookingCalendar from './components/BookingCalendar';
+import { useLanguage } from './context/LanguageContext';
+import { useT } from './translations';
 import { SPECIES_DATA, SPECIAL_FEATURES, IMAGES, CHARTER_TRIPS } from './data';
 import { Species } from './types';
 
@@ -44,23 +50,23 @@ import fishSailfishAlt from './assets/images/blue_marlin_1781200358551.jpg';
 // @ts-ignore
 import fishDoradoOuter from './assets/images/real/fish_dorado_outer.jpg';
 // @ts-ignore
-import fishDoradoAlt from './assets/images/dorado_mahi_1781200329038.jpg';
+import fishDoradoAlt from './assets/images/fish_mahi_live.jpg';
 // @ts-ignore
 import fishRoosterOuter from './assets/images/real/fish_rooster_outer.jpg';
 // @ts-ignore
 import fishRoosterAlt from './assets/images/rooster_fish_1781200344379.jpg';
 // @ts-ignore
-import fishPargoAlt from './assets/images/rooster_fish_1781200344379.jpg';
+import fishPargoOuter from './assets/images/fish_pargo_outer.jpg';
 // @ts-ignore
-import fishAmberjackAlt from './assets/images/yellowfin_tuna_1781200373236.jpg';
+import fishAmberjackOuter from './assets/images/fish_amberjack_gen.jpg';
 
 const FISH_IMAGES: Record<string, [string, string]> = {
-  'yellowfin-tuna':  [fishTunaOuter,     fishTunaAlt],
-  'sailfish-marlin': [fishSailfishOuter, fishSailfishAlt],
-  'dorado-mahi':     [fishDoradoOuter,   fishDoradoAlt],
-  'roosterfish':     [fishRoosterOuter,  fishRoosterAlt],
-  'pargo':           [fishRoosterOuter,  fishPargoAlt],
-  'amberjack':       [fishTunaOuter,     fishAmberjackAlt],
+  'yellowfin-tuna':  [fishTunaOuter,      fishTunaAlt],
+  'sailfish-marlin': [fishSailfishOuter,  fishSailfishAlt],
+  'dorado-mahi':     [fishDoradoAlt,      fishDoradoAlt],
+  'roosterfish':     [fishRoosterOuter,   fishRoosterAlt],
+  'pargo':           [fishPargoOuter,     fishPargoOuter],
+  'amberjack':       [fishAmberjackOuter, fishAmberjackOuter],
 };
 
 // Ambient Theme Parameters & Live Rig configurations for interactive gear testing
@@ -229,6 +235,8 @@ export default function App() {
   const [selectedSpeciesId, setSelectedSpeciesId] = useState<string>('yellowfin-tuna');
   const [selectedRigId, setSelectedRigId] = useState<string>('');
   const [themeMode, setThemeMode] = useState<'sapphire' | 'obsidian' | 'misty'>('sapphire');
+  const { lang, toggle: toggleLang } = useLanguage();
+  const t = useT();
 
   const activeSpecies = SPECIES_DATA.find(s => s.id === selectedSpeciesId) || SPECIES_DATA[0];
   const theme = speciesThemes[selectedSpeciesId] || speciesThemes['sailfish-marlin'];
@@ -291,7 +299,7 @@ export default function App() {
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-1.5 font-medium text-teal-400">
             <span className="h-1.5 w-1.5 rounded-full bg-teal-400 animate-pulse" />
-            Live Port Report
+            {t('statusLive')}
           </span>
           <span className="text-white/20">•</span>
           <span className="flex items-center gap-1">
@@ -300,15 +308,15 @@ export default function App() {
         </div>
         <div className="flex items-center gap-6">
           <span className="flex items-center gap-1">
-            <Thermometer size={12} className="text-white/30" /> Air: 88°F / Water: 83°F
+            <Thermometer size={12} className="text-white/30" /> {t('statusAir')}
           </span>
           <span className="hidden sm:inline text-white/20">•</span>
           <span className="flex items-center gap-1">
-            <Wind size={12} className="text-white/30" /> Wind: 4 knots ESE
+            <Wind size={12} className="text-white/30" /> {t('statusWind')}
           </span>
           <span className="hidden sm:inline text-white/20">•</span>
           <span className="flex items-center gap-1">
-            <Waves size={12} className="text-white/30" /> Sea: 1.2ft Light Chop
+            <Waves size={12} className="text-white/30" /> {t('statusSea')}
           </span>
         </div>
       </div>
@@ -316,7 +324,7 @@ export default function App() {
       {/* TROPICAL WEATHER ADVISORY — storms build fast on the Pacific */}
       <div className="bg-amber-500/8 border-b border-amber-500/15 text-white/55 py-1.5 px-4 lg:px-8 text-[10px] font-mono tracking-wider flex items-center justify-center gap-2 relative z-50">
         <span className="text-amber-400 text-[11px]">⚠</span>
-        <span>Tropical Pacific conditions can change quickly — storms build fast. Captain Jorge monitors radar and will adjust or reschedule for your safety.</span>
+        <span>{t('weatherWarning')}</span>
       </div>
 
       {/* GLASSMORPHIC BRAND MENU */}
@@ -330,20 +338,20 @@ export default function App() {
               CASA JIMENEZ
             </h1>
             <span className={`text-[9px] font-mono tracking-[4px] uppercase ${themeStyle.brandSub} block`}>
-              Sport Fishing · Osa Peninsula
+              {t('footerSport')}
             </span>
           </div>
         </div>
 
         {/* Anchor Links */}
         <nav className="hidden xl:flex items-center gap-5 font-mono text-[10px] uppercase tracking-widest text-white/40">
-          <button onClick={() => handleScrollTo('features')} className={`hover:text-gold-400 transition duration-300 cursor-pointer`}>Geography</button>
-          <button onClick={() => handleScrollTo('species')} className={`hover:text-gold-400 transition duration-300 cursor-pointer`}>The Catch</button>
-          <button onClick={() => handleScrollTo('migration')} className={`hover:text-gold-400 transition duration-300 cursor-pointer`}>Migration</button>
-          <button onClick={() => handleScrollTo('culinary')} className={`hover:text-gold-400 transition duration-300 cursor-pointer font-semibold text-gold-300`}>Captain's Galley</button>
-          <button onClick={() => handleScrollTo('solunar')} className={`hover:text-gold-400 transition duration-300 cursor-pointer`}>Tide Forecast</button>
-          <button onClick={() => handleScrollTo('tripbuilder')} className={`hover:text-gold-400 transition duration-300 cursor-pointer`}>Itinerary Planner</button>
-          <button onClick={() => handleScrollTo('gallery')} className={`hover:text-gold-400 transition duration-300 cursor-pointer`}>Recent Landings</button>
+          <button onClick={() => handleScrollTo('features')} className={`hover:text-gold-400 transition duration-300 cursor-pointer`}>{t('navGeography')}</button>
+          <button onClick={() => handleScrollTo('species')} className={`hover:text-gold-400 transition duration-300 cursor-pointer`}>{t('navCatch')}</button>
+          <button onClick={() => handleScrollTo('migration')} className={`hover:text-gold-400 transition duration-300 cursor-pointer`}>{t('navMigration')}</button>
+          <button onClick={() => handleScrollTo('culinary')} className={`hover:text-gold-400 transition duration-300 cursor-pointer font-semibold text-gold-300`}>{t('navGalley')}</button>
+          <button onClick={() => handleScrollTo('solunar')} className={`hover:text-gold-400 transition duration-300 cursor-pointer`}>{t('navTide')}</button>
+          <button onClick={() => handleScrollTo('tripbuilder')} className={`hover:text-gold-400 transition duration-300 cursor-pointer`}>{t('navPlanner')}</button>
+          <button onClick={() => handleScrollTo('gallery')} className={`hover:text-gold-400 transition duration-300 cursor-pointer`}>{t('navLandings')}</button>
         </nav>
 
         {/* DYNAMIC PALETTE CONTROLLER — hidden, locked to sapphire */}
@@ -382,26 +390,44 @@ export default function App() {
           </button>
         </div>
 
+        {/* Language toggle */}
+        <button
+          onClick={toggleLang}
+          className="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-white/15 text-white/60 hover:text-white hover:border-white/35 transition-all text-[11px] font-mono tracking-widest uppercase"
+          aria-label="Switch language"
+        >
+          {lang === 'en' ? 'ES' : 'EN'}
+        </button>
+
         {/* CTA Contact Email */}
         <a
           href="mailto:cabinasjimenez@gmail.com?subject=Fishing Charter Inquiry&body=Hello, I would like to inquire about booking a fishing charter with Casa Jimenez Sport Fishing..."
           className="bg-white text-black font-sans font-semibold text-xs px-5 py-2.5 rounded-xl transition duration-300 hover:bg-teal-400 hover:text-black"
         >
-          Book Now
+          {t('navBookNow')}
         </a>
       </header>
 
       {/* DRAG-AND-HOOK HERO PLATFORM */}
       <section className="relative min-h-[85vh] flex items-center justify-center py-20 px-4 overflow-hidden border-b border-gold-900/20">
         
-        {/* Background: show more of the photo, stronger contrast at bottom only */}
+        {/* Background: cinematic video loop with static photo fallback */}
         <div className="absolute inset-0 z-0">
-          <img
-            src={IMAGES.hero}
-            alt="Casa Jimenez — Puerto Jiménez Waterfront at Sunset"
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={IMAGES.hero}
             className="w-full h-full object-cover filter brightness-[0.52] contrast-[1.08] saturate-[1.1]"
-            referrerPolicy="no-referrer"
-          />
+          >
+            <source src="/boat_video.mp4" type="video/mp4" />
+            <img
+              src={IMAGES.hero}
+              alt="Casa Jimenez — Puerto Jiménez Waterfront at Sunset"
+              className="w-full h-full object-cover"
+            />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-t from-[#0c1118] via-[#0c1118]/20 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0c1118]/40 via-transparent to-[#0c1118]/20" />
         </div>
@@ -413,42 +439,42 @@ export default function App() {
           <div className="inline-flex items-center gap-2 bg-black/30 border border-white/15 px-4 py-1.5 rounded-full backdrop-blur-md">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-teal-400 animate-pulse" />
             <span className="font-mono text-[10px] tracking-[3px] text-white/70 uppercase">
-              Puerto Jiménez · Osa Peninsula · Gulf of Dulce
+              {t('heroLocation')}
             </span>
           </div>
 
           {/* Brand name — the dominant hero element */}
-          <div className="-space-y-4 sm:-space-y-6 lg:-space-y-8">
-            <h1 className="font-display text-[88px] sm:text-[120px] lg:text-[170px] xl:text-[210px] text-white leading-none tracking-wide block">
+          <div className="-space-y-2 sm:-space-y-6 lg:-space-y-8">
+            <h1 className="font-display text-[56px] sm:text-[120px] lg:text-[170px] xl:text-[210px] text-white leading-none tracking-wide block">
               CASA
             </h1>
-            <h1 className="font-display text-[88px] sm:text-[120px] lg:text-[170px] xl:text-[210px] text-white leading-none tracking-wide block">
+            <h1 className="font-display text-[56px] sm:text-[120px] lg:text-[170px] xl:text-[210px] text-white leading-none tracking-wide block">
               JIMENEZ
             </h1>
           </div>
 
           {/* Tagline row */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 pt-2">
-            <span className="font-mono text-[10px] tracking-[4px] text-white/35 uppercase">Sport Fishing</span>
+            <span className="font-mono text-[10px] tracking-[4px] text-white/35 uppercase">{t('heroSport')}</span>
             <span className="hidden sm:block h-px w-12 bg-white/20" />
             <h2 className="font-serif italic text-[22px] sm:text-[28px] lg:text-[34px] text-white/75 font-normal leading-none">
-              Real Fishing. Real Costa Rica.
+              {t('heroTagline')}
             </h2>
             <span className="hidden sm:block h-px w-12 bg-white/20" />
-            <span className="font-mono text-[10px] tracking-[4px] text-white/35 uppercase">Est. Osa Peninsula</span>
+            <span className="font-mono text-[10px] tracking-[4px] text-white/35 uppercase">{t('heroEst')}</span>
           </div>
 
           <p className="font-sans text-sm sm:text-base text-white/55 max-w-lg mx-auto font-light leading-relaxed pt-2">
-            Board the <strong className="text-white font-medium">Kaylee</strong> — one family, one boat, one of the most biodiverse places on Earth. Giant Yellowfin Tuna, Sailfish, Roosterfish, and Dorado off the Osa.
+            {t('heroDesc')}
           </p>
 
           {/* Stats row — display numbers */}
           <div className="flex flex-wrap justify-center divide-x divide-white/10 pt-6 border-t border-white/10 max-w-2xl mx-auto">
             {[
-              { val: '30 MIN', label: 'to open Pacific' },
-              { val: '150 LB+', label: 'Yellowfin Tuna' },
-              { val: '100%', label: 'billfish release' },
-              { val: 'GULF CALM', label: 'protected waters' },
+              { val: '30 MIN', label: t('heroStat1Label') },
+              { val: '150 LB+', label: t('heroStat2Label') },
+              { val: '100%', label: t('heroStat3Label') },
+              { val: t('heroStat4Val'), label: t('heroStat4Label') },
             ].map((s, i) => (
               <div key={i} className="flex-1 min-w-[110px] px-4 py-3 text-center">
                 <span className="font-display text-[28px] sm:text-[34px] text-white leading-none block tracking-wide">{s.val}</span>
@@ -463,13 +489,13 @@ export default function App() {
               onClick={() => handleScrollTo('tripbuilder')}
               className="px-8 py-3.5 bg-white text-black font-sans font-bold text-xs tracking-widest uppercase rounded-xl transition duration-200 hover:bg-teal-400 w-full sm:w-auto"
             >
-              Build Your Charter
+              {t('heroCta1')}
             </button>
             <button
               onClick={() => handleScrollTo('features')}
               className="px-8 py-3.5 bg-white/8 border border-white/20 text-white/75 hover:text-white hover:bg-white/12 backdrop-blur-sm transition duration-200 font-sans font-medium text-xs tracking-widest uppercase rounded-xl flex items-center justify-center gap-2 w-full sm:w-auto"
             >
-              Explore the Waters <ArrowDown size={13} className="text-teal-400" />
+              {t('heroCta2')} <ArrowDown size={13} className="text-teal-400" />
             </button>
           </div>
         </div>
@@ -482,9 +508,9 @@ export default function App() {
 
           {/* Header — dark text on light bg */}
           <div className="mb-14">
-            <span className="text-[10px] font-mono tracking-[3px] uppercase text-jungle-600 block mb-2">Osa Peninsula · Gulf of Dulce</span>
+            <span className="text-[10px] font-mono tracking-[3px] uppercase text-jungle-600 block mb-2">{t('whyLabel')}</span>
             <h3 className="font-display text-[56px] sm:text-[80px] lg:text-[96px] text-[#0f1a0f] leading-none tracking-wide">
-              WHY FISH THE OSA?
+              {t('whyTitle')}
             </h3>
           </div>
 
@@ -495,9 +521,9 @@ export default function App() {
             <div className="bg-[#0f2112] rounded-2xl p-8 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 min-h-[320px] flex flex-col justify-between">
               <span className="font-display text-[130px] leading-none text-[#1e4422]/50 absolute -bottom-6 -right-4 select-none pointer-events-none">01</span>
               <div className="relative z-10">
-                <span className="text-[9px] font-mono tracking-widest text-jungle-400 uppercase block mb-5">Tropical Fjord</span>
-                <h4 className="font-serif text-2xl text-white font-medium mb-3">{SPECIAL_FEATURES[0].title}</h4>
-                <p className="text-sm text-white/55 font-light leading-relaxed">{SPECIAL_FEATURES[0].description}</p>
+                <span className="text-[9px] font-mono tracking-widest text-jungle-400 uppercase block mb-5">{t('whyPanel1Label')}</span>
+                <h4 className="font-serif text-2xl text-white font-medium mb-3">{t('feature0Title')}</h4>
+                <p className="text-sm text-white/55 font-light leading-relaxed">{t('feature0Desc')}</p>
               </div>
             </div>
 
@@ -505,9 +531,9 @@ export default function App() {
             <div className="bg-[#004d42] rounded-2xl p-8 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 min-h-[320px] flex flex-col justify-between">
               <span className="font-display text-[130px] leading-none text-white/8 absolute -bottom-6 -right-4 select-none pointer-events-none">02</span>
               <div className="relative z-10">
-                <span className="text-[9px] font-mono tracking-widest text-teal-300 uppercase block mb-5">National Geographic Territory</span>
-                <h4 className="font-serif text-2xl text-white font-medium mb-3">{SPECIAL_FEATURES[1].title}</h4>
-                <p className="text-sm text-white/55 font-light leading-relaxed">{SPECIAL_FEATURES[1].description}</p>
+                <span className="text-[9px] font-mono tracking-widest text-teal-300 uppercase block mb-5">{t('whyPanel2Label')}</span>
+                <h4 className="font-serif text-2xl text-white font-medium mb-3">{t('feature1Title')}</h4>
+                <p className="text-sm text-white/55 font-light leading-relaxed">{t('feature1Desc')}</p>
               </div>
             </div>
 
@@ -515,9 +541,9 @@ export default function App() {
             <div className="bg-[#6b2e00] rounded-2xl p-8 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 min-h-[320px] flex flex-col justify-between">
               <span className="font-display text-[130px] leading-none text-white/8 absolute -bottom-6 -right-4 select-none pointer-events-none">03</span>
               <div className="relative z-10">
-                <span className="text-[9px] font-mono tracking-widest text-gold-300 uppercase block mb-5">Open Ocean 30 Min Out</span>
-                <h4 className="font-serif text-2xl text-white font-medium mb-3">{SPECIAL_FEATURES[2].title}</h4>
-                <p className="text-sm text-white/55 font-light leading-relaxed">{SPECIAL_FEATURES[2].description}</p>
+                <span className="text-[9px] font-mono tracking-widest text-gold-300 uppercase block mb-5">{t('whyPanel3Label')}</span>
+                <h4 className="font-serif text-2xl text-white font-medium mb-3">{t('feature2Title')}</h4>
+                <p className="text-sm text-white/55 font-light leading-relaxed">{t('feature2Desc')}</p>
               </div>
             </div>
 
@@ -597,14 +623,14 @@ export default function App() {
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-teal-500/10 rounded-full border border-teal-500/20 mb-3">
                   <span className="h-1.5 w-1.5 rounded-full bg-teal-400 animate-pulse" />
                   <span className="text-[9px] font-mono tracking-widest uppercase text-teal-300">
-                    Interactive Marine Spotlight
+                    {t('catchBadge')}
                   </span>
                 </div>
                 <h3 className="font-display text-[52px] text-white tracking-wide leading-none">
-                  THE CATCH
+                  {t('catchTitle')}
                 </h3>
                 <p className="text-xs text-white/50 mt-3 font-light leading-relaxed">
-                  Hover any fish to reveal its anatomy. Click to see full tactics, seasonal windows, and gear rigs.
+                  {t('catchDesc')}
                 </p>
               </div>
  
@@ -634,7 +660,7 @@ export default function App() {
               {/* Dynamic Ocean Vibe Quote */}
               <div className={`p-4 rounded-xl bg-white/90 border ${theme.borderClass} hidden lg:block transition-all duration-500 shadow-sm`}>
                 <span className="text-[9px] font-mono tracking-widest text-teal-600 uppercase block mb-1">
-                  Active Ocean Zone
+                  {t('catchZoneLabel')}
                 </span>
                 <p className="text-xs font-serif italic text-black/70">
                   {theme.tagline}
@@ -805,7 +831,12 @@ export default function App() {
 
       {/* TRIP BUILDER RESERVES */}
       <section id="tripbuilder" className="py-20 lg:py-28 px-4 lg:px-8 max-w-7xl mx-auto">
+        <FishingReport />
+
         <TripBuilder />
+
+        <BookingCalendar />
+
       </section>
 
       {/* CATCHES OF THE MONTH SHOWCASE */}
@@ -817,6 +848,8 @@ export default function App() {
 
       {/* BOAT GALLERY — real photos from the Kaylee */}
       <PhotoGallery />
+
+      <Testimonials />
 
       {/* FAQ SECTION — full-bleed image background */}
       <section className="relative overflow-hidden border-t border-gold-900/15">
@@ -834,39 +867,39 @@ export default function App() {
 
             <div className="text-center mb-14">
               <h3 className="font-display text-[56px] sm:text-[72px] lg:text-[88px] text-white leading-none tracking-wide">
-                BEFORE YOU BOOK
+                {t('faqTitle')}
               </h3>
-              <p className="text-sm font-light text-white/40 mt-3 font-mono tracking-widest uppercase">Common questions answered</p>
+              <p className="text-sm font-light text-white/40 mt-3 font-mono tracking-widest uppercase">{t('faqSubtitle')}</p>
             </div>
 
             <div className="space-y-3">
               <details className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 group cursor-pointer hover:bg-white/8 transition-colors">
                 <summary className="font-sans text-base text-white font-medium flex justify-between items-center list-none">
-                  <span>Do we need to buy Costa Rica fishing permits?</span>
+                  <span>{t('faq1Q')}</span>
                   <ChevronDown className="text-gold-400 shrink-0 ml-4 group-open:rotate-180 transition duration-300" size={16} />
                 </summary>
                 <p className="text-sm text-white/55 leading-relaxed font-light mt-4 pt-4 border-t border-white/8">
-                  No. All standard INCOPESCA guest sportfishing licenses are included with your charter. We handle all paperwork and register your party with the Puerto Jiménez port authorities before departure.
+                  {t('faq1A')}
                 </p>
               </details>
 
               <details className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 group cursor-pointer hover:bg-white/8 transition-colors">
                 <summary className="font-sans text-base text-white font-medium flex justify-between items-center list-none">
-                  <span>Can we keep our catch for our chef?</span>
+                  <span>{t('faq2Q')}</span>
                   <ChevronDown className="text-gold-400 shrink-0 ml-4 group-open:rotate-180 transition duration-300" size={16} />
                 </summary>
                 <p className="text-sm text-white/55 leading-relaxed font-light mt-4 pt-4 border-t border-white/8">
-                  Absolutely for Yellowfin Tuna and Dorado (Mahi-Mahi). We clean and fillet your catch dockside and pack it on fresh ice. The restaurants in Puerto Jiménez will cook it fresh that evening — or take it back to Cabinas Jimenez. Sailfish, Marlin, and Roosterfish are 100% catch-and-release only.
+                  {t('faq2A')}
                 </p>
               </details>
 
               <details className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 group cursor-pointer hover:bg-white/8 transition-colors">
                 <summary className="font-sans text-base text-white font-medium flex justify-between items-center list-none">
-                  <span>What is the cancellation policy during green season?</span>
+                  <span>{t('faq3Q')}</span>
                   <ChevronDown className="text-gold-400 shrink-0 ml-4 group-open:rotate-180 transition duration-300" size={16} />
                 </summary>
                 <p className="text-sm text-white/55 leading-relaxed font-light mt-4 pt-4 border-t border-white/8">
-                  Our safety limits are absolute. Costa Rican waters stay remarkably glassy during rains, but we monitor weather radar closely. In the rare event of lightning squalls, your booking can be fully rescheduled or refunded immediately.
+                  {t('faq3A')}
                 </p>
               </details>
             </div>
@@ -875,8 +908,26 @@ export default function App() {
         </div>
       </section>
 
+      {/* WHATSAPP FLOATING BUTTON — update phone number before going live */}
+      <a
+        href="https://wa.me/50688888888?text=Hello%20Captain%20Jorge%2C%20I%27d%20like%20to%20inquire%20about%20a%20fishing%20charter"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contact on WhatsApp"
+        className="fixed bottom-[88px] right-6 z-50 h-14 w-14 rounded-full flex items-center justify-center shadow-2xl transition-transform hover:scale-105 active:scale-95"
+        style={{ background: 'linear-gradient(135deg, #128c3e 0%, #075e2f 100%)', border: '1px solid rgba(37,211,102,0.35)' }}
+      >
+        {/* WhatsApp icon (inline SVG) */}
+        <svg viewBox="0 0 24 24" fill="white" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </a>
+
+      {/* CAPTAIN CHATBOT */}
+      <CaptainChat />
+
       {/* FOOTER */}
-      <footer className="bg-black border-t border-white/6 py-14 px-4 lg:px-8">
+      <footer className="bg-black border-t border-white/6 pt-14 pb-40 sm:pb-14 px-4 lg:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
 
           <div className="md:col-span-4 space-y-4">
@@ -894,13 +945,13 @@ export default function App() {
               </div>
             </div>
             <p className="text-xs text-white/40 leading-relaxed max-w-sm font-light">
-              Family-run sportfishing charters out of Puerto Jiménez on the Osa Peninsula. Yellowfin Tuna, Sailfish, Roosterfish, and Dorado — fished the right way, in one of the most spectacular places on Earth.
+              {t('footerDesc')}
             </p>
           </div>
 
           <div className="md:col-span-4 space-y-4 font-mono text-xs text-white/50">
             <h5 className="font-sans text-sm font-semibold text-white uppercase tracking-widest">
-              Contact & Inquiries
+              {t('footerContact')}
             </h5>
             <div className="space-y-2">
               <p className="flex items-center gap-2">
@@ -917,7 +968,7 @@ export default function App() {
 
           <div className="md:col-span-4 space-y-4">
             <h5 className="font-sans text-sm font-semibold text-white uppercase tracking-widest">
-              Conservation Commitment
+              {t('footerConservation')}
             </h5>
             <p className="text-xs text-white/35 leading-relaxed font-light">
               We operate strictly under the guidelines of the Billfish Foundation and regional Costa Rican conservation mandates. Our crews are trained in safe deep-water billfish release, ensuring the future vitality of the Blue Pacific.
@@ -929,9 +980,9 @@ export default function App() {
         <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-white/6 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-mono text-white/20">
           <span>&copy; {new Date().getFullYear()} Casa Jimenez Sport Fishing. Puerto Jiménez, Costa Rica. All Rights Reserved.</span>
           <div className="flex gap-4">
-            <span className="hover:text-white/50 cursor-pointer transition-colors">Terms of Charter</span>
+            <span className="hover:text-white/50 cursor-pointer transition-colors">{t('footerTerms')}</span>
             <span>•</span>
-            <span className="hover:text-white/50 cursor-pointer transition-colors">Safety Guidelines</span>
+            <span className="hover:text-white/50 cursor-pointer transition-colors">{t('footerSafety')}</span>
             <span>•</span>
             <span className="hover:text-white/50 cursor-pointer transition-colors">INCOPESCA Certified</span>
           </div>
